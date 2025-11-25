@@ -1,9 +1,9 @@
 <?php
 
-$host = "localhost";
-$user = "root";
-$password = "";
-$database = "users_db";
+$host = "sql112.infinityfree.com";     // MySQL Hostname
+$user = "if0_40507318";                // MySQL Username
+$password = "PASSWORD_VPANEL_KAMU";    // MySQL Password (bukan kosong)
+$database = "if0_40507318_payclass_db"; // MySQL Database name
 
 $conn = new mysqli($host, $user, $password, $database);
 
