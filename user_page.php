@@ -294,7 +294,7 @@
         </div>
 
         <div class="button-container">
-            <button onclick="window.location.href='pembayaran.php'">
+            <button onclick="goToPembayaran()">
                 <div class="text3">PEMBAYARAN</div>
             </button>
             <button onclick="showPengeluaran()">
@@ -642,7 +642,23 @@
         let totalPembayaran = 0;
         let totalPengeluaran = 0;
 
-        document.addEventListener("DOMContentLoaded", muatData);
+        function goToPembayaran() {
+            const anggotaEl = document.getElementById('anggota');
+            const pengeluaranEl = document.getElementById('pengeluaran');
+            let tab = 'home';
+            if (anggotaEl && getComputedStyle(anggotaEl).display !== 'none') tab = 'anggota';
+            else if (pengeluaranEl && getComputedStyle(pengeluaranEl).display !== 'none') tab = 'pengeluaran';
+            window.location.href = 'pembayaran.php?tab=' + encodeURIComponent(tab) + '&from=user';
+        }
+
+        document.addEventListener("DOMContentLoaded", function () {
+            muatData();
+            const params = new URLSearchParams(window.location.search);
+            const tab = params.get('tab');
+            if (tab === 'anggota') showAnggota();
+            else if (tab === 'pengeluaran') showPengeluaran();
+            else showHome();
+        });
 
         function showAnggota() { document.getElementById("home").style.display = "none"; document.getElementById("anggota").style.display = "block"; document.getElementById("pengeluaran").style.display = "none"; }
         function showPengeluaran() { document.getElementById("home").style.display = "none"; document.getElementById("anggota").style.display = "none"; document.getElementById("pengeluaran").style.display = "block"; }

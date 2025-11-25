@@ -438,7 +438,7 @@ $user_email = $_SESSION['email'] ?? 'admin@payclass.local';
         </div>
 
         <div class="button-container">
-            <button onclick="window.location.href='pembayaran.php'">
+            <button onclick="goToPembayaran()">
                 <div class="text3">PEMBAYARAN</div>
             </button>
             <button onclick="showPengeluaran()">
@@ -546,6 +546,15 @@ $user_email = $_SESSION['email'] ?? 'admin@payclass.local';
         let totalPembayaran = 0;
         let totalPengeluaran = 0;
 
+        function goToPembayaran() {
+            const anggotaEl = document.getElementById('anggota');
+            const pengeluaranEl = document.getElementById('pengeluaran');
+            let tab = 'home';
+            if (anggotaEl && getComputedStyle(anggotaEl).display !== 'none') tab = 'anggota';
+            else if (pengeluaranEl && getComputedStyle(pengeluaranEl).display !== 'none') tab = 'pengeluaran';
+            window.location.href = 'pembayaran.php?tab=' + encodeURIComponent(tab) + '&from=admin';
+        }
+
         document.addEventListener("DOMContentLoaded", function() {
             // Delay sebentar agar table sudah ter-render
             setTimeout(function() {
@@ -554,6 +563,13 @@ $user_email = $_SESSION['email'] ?? 'admin@payclass.local';
                 attachCheckboxListeners();
                 updateSaldo();
                 updatePemasukanBulanan();
+
+                // restore requested tab if passed
+                const params = new URLSearchParams(window.location.search);
+                const tab = params.get('tab');
+                if (tab === 'anggota') showAnggota();
+                else if (tab === 'pengeluaran') showPengeluaran();
+                else showHome();
             }, 100);
         });
 

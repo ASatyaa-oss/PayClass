@@ -117,8 +117,13 @@ session_start();
 
         <div class="note">Gunakan aplikasi e-wallet Anda (OVO, GoPay, Dana, dll.) untuk memindai.</div>
 
+        <?php
+        $tab = isset($_GET['tab']) ? htmlspecialchars($_GET['tab']) : 'home';
+        $from = isset($_GET['from']) ? htmlspecialchars($_GET['from']) : 'user';
+        $back = ($from === 'admin') ? "admin_page.php?tab={$tab}" : "user_page.php?tab={$tab}";
+        ?>
         <div class="actions">
-            <a class="btn-back" href="user_page.php">Kembali</a>
+            <a class="btn-back" href="<?php echo $back; ?>">Kembali</a>
             <button class="btn-download" id="downloadBtn">Download</button>
         </div>
     </div>
