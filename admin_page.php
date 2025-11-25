@@ -502,7 +502,7 @@ $user_email = $_SESSION['email'] ?? 'admin@payclass.local';
             <tr>
                 <th>No</th>
                 <th>Nama</th>
-                <th>Minggu 100</th>
+                <th>Minggu 1</th>
                 <th>Minggu 2</th>
                 <th>Minggu 3</th>
                 <th>Minggu 4</th>
