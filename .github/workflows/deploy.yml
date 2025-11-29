@@ -3,7 +3,7 @@ name: Deploy Website ke InfinityFree
 on:
   push:
     branches:
-      - main  # Pastikan nama branch utama kalian 'main' atau 'master'
+      - main  # PPastikan nama branch utama kalian 'main' atau 'master'
 
 jobs:
   web-deploy:
