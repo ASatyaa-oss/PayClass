@@ -39,7 +39,6 @@ function isActiveForm($formname, $active_form) {
                 <h2>Login PayClass</h2>
                 <?= showerror($errors['login']) ?>
                 <input type="email" name="email" placeholder="Email" required>
-                <input type="tel" name="phone" placeholder="No. Telepon" required>
                 <input type="password" name="password" placeholder="Password" required>
                 <button type="submit" name="login">Login</button>
                 <p>Belum memiliki Akun? <a href="#" onclick="showForm('register-form'); return false;">Daftar</a></p>
@@ -53,8 +52,9 @@ function isActiveForm($formname, $active_form) {
             <form action="login_register.php" method="post">
                 <h2>Register PayClass</h2>
                 <?= showerror($errors['register']) ?>
-          <input type="text" name="name" placeholder="Nama Lengkap" required>
+            <input type="text" name="name" placeholder="Nama Lengkap" required>
                 <input type="email" name="email" placeholder="Email" required>
+                <input type="tel" name="phone" placeholder="No. Telepon" required>
                 <input type="password" name="password" placeholder="Password" required>
                 <select name="class" required>
                     <option value="" disabled selected>Select Class</option>
