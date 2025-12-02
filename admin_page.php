@@ -461,12 +461,6 @@ $user_phone = $_SESSION['phone'] ?? '';
             <div class="user-name"><?php echo htmlspecialchars($user_name); ?></div>
             <div class="user-role">Admin</div>
             <div class="user-email"><?php echo htmlspecialchars($user_email); ?></div>
-            <?php if (!empty($user_phone)): ?>
-            <div class="info-section">
-                <div class="info-label">No. Telepon</div>
-                <div class="info-value"><?php echo htmlspecialchars($user_phone); ?></div>
-            </div>
-            <?php endif; ?>
             
             <div class="divider"></div>
             
@@ -479,6 +473,13 @@ $user_phone = $_SESSION['phone'] ?? '';
                 <div class="info-label">Status</div>
                 <div class="info-value">Administrator</div>
             </div>
+            
+            <?php if (!empty($user_phone)): ?>
+            <div class="info-section">
+                <div class="info-label">No. Telepon</div>
+                <div class="info-value"><?php echo htmlspecialchars($user_phone); ?></div>
+            </div>
+            <?php endif; ?>
             
             <div class="btn-group">
                 <button class="btn-back" onclick="closeProfilePage()">⬅ Kembali</button>
