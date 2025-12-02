@@ -912,6 +912,13 @@ $user_phone = $_SESSION['phone'] ?? '';
             if (profile) profile.style.display = 'none';
             if (home) home.style.display = 'block';
         }
+
+        // Logout function
+        function logout() {
+            if (confirm('Apakah Anda yakin ingin logout?')) {
+                window.location.href = 'logout.php';
+            }
+        }
     </script>
 </body>
 
