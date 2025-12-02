@@ -2,6 +2,7 @@
 session_start();
 $user_name = $_SESSION['name'] ?? 'User';
 $user_email = $_SESSION['email'] ?? '';
+$user_class = $_SESSION['class'] ?? '';
 $user_phone = $_SESSION['phone'] ?? '';
 ?>
 <!DOCTYPE html>
@@ -273,7 +274,51 @@ $user_phone = $_SESSION['phone'] ?? '';
         .qr-box .note { font-size:13px; color:#666; margin-bottom:12px; }
         .qr-box .buttons { display:flex; gap:10px; justify-content:space-between; }
         .qr-box .buttons button { flex:1; }
-    </style>
+
+<style>
+    /* Profile card styles (copied from admin page for consistency) */
+    #profilePage {
+        display: none;
+        min-height: 100vh;
+        padding: 20px;
+        background: linear-gradient(135deg, #43085d, #961ccb);
+    }
+
+    #profilePage.show, #profilePage[style*="display:flex"] { display: flex; flex-direction: column; align-items: center; justify-content: center; }
+
+    .profile-card {
+        background: white;
+        border-radius: 15px;
+        padding: 40px;
+        width: 100%;
+        max-width: 500px;
+        box-shadow: 0 8px 30px rgba(0,0,0,0.3);
+        text-align: center;
+    }
+
+    .profile-card .avatar {
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+        background: linear-gradient(135deg, #43085d, #961ccb);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 50px;
+        margin: 0 auto 20px;
+        border: 4px solid #522780;
+    }
+
+    .profile-card .user-name { font-size: 28px; font-weight: bold; color: #333; margin: 10px 0; }
+    .profile-card .user-role { font-size: 16px; color: #888; margin: 5px 0; }
+    .profile-card .user-email { font-size: 14px; color: #999; margin: 10px 0 10px 0; word-break: break-word; }
+    .profile-card .info-section { text-align: left; margin: 12px 0; }
+    .profile-card .info-label { font-size: 12px; color: #888; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 5px; }
+    .profile-card .info-value { font-size: 16px; color: #333; word-break: break-word; }
+    .profile-card .btn-group { display:flex; gap:10px; margin-top:18px; }
+    .profile-card .btn-back { background:#f0f0f0; color:#333; padding:10px 18px; border-radius:8px; border:none; }
+    .profile-card .btn-logout { background:#e53935; color:white; padding:10px 18px; border-radius:8px; border:none; }
+</style>
 </head>
 
 <body>
@@ -334,11 +379,23 @@ $user_phone = $_SESSION['phone'] ?? '';
             <div class="user-role">User</div>
             <div class="user-email"><?php echo htmlspecialchars($user_email); ?></div>
             <?php if (!empty($user_phone)): ?>
-            <div class="info-section" style="margin-top:12px;">
+            <div class="info-section">
                 <div class="info-label">No. Telepon</div>
                 <div class="info-value"><?php echo htmlspecialchars($user_phone); ?></div>
             </div>
             <?php endif; ?>
+            
+            <div class="divider" style="height:1px; background:#e0e0e0; margin:20px 0;"></div>
+            
+            <div class="info-section">
+                <div class="info-label">Kelas</div>
+                <div class="info-value"><?php echo htmlspecialchars($user_class); ?></div>
+            </div>
+            
+            <div class="info-section">
+                <div class="info-label">Status</div>
+                <div class="info-value">User</div>
+            </div>
             <div style="margin-top:18px; display:flex; gap:10px; justify-content:center;">
                 <button class="btn-back" onclick="closeProfilePage()">⬅ Kembali</button>
                 <button class="btn-logout" onclick="logout()">🚪 Logout</button>
