@@ -6,6 +6,7 @@ require_once 'config.php';
 if (isset($_POST['register'])) {
     $name = $_POST['name'];
     $email = $_POST['email'];
+    $phone = isset($_POST['phone']) ? trim($_POST['phone']) : '';
     $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
     $class = $_POST['class'];
     $stmt = $conn->prepare("SELECT email FROM users WHERE email = ?");
@@ -28,9 +29,9 @@ if (isset($_POST['register'])) {
         exit();
     }
 
-    $stmt = $conn->prepare("INSERT INTO users (name, email, password, class) VALUES (?, ?, ?, ?)");
+    $stmt = $conn->prepare("INSERT INTO users (name, email, password, class, phone) VALUES (?, ?, ?, ?, ?)");
     if ($stmt) {
-        $stmt->bind_param('ssss', $name, $email, $password, $class);
+        $stmt->bind_param('sssss', $name, $email, $password, $class, $phone);
         if (!$stmt->execute()) {
             $_SESSION['register_error'] = "Gagal mendaftar. Silakan coba lagi.";
             $_SESSION['active_form'] = 'register';
@@ -58,6 +59,10 @@ if (isset($_POST['login'])) {
             if (password_verify($password, $user['password'])) {
                 $_SESSION['name'] = $user['name'];
                 $_SESSION['email'] = $user['email'];
+                // Simpan nomor telepon ke session jika ada
+                if (isset($user['phone'])) {
+                    $_SESSION['phone'] = $user['phone'];
+                }
                 // Simpan 'class' dari tabel users ke session.
                 // Di tabel pendaftaran kolom dinamai 'class' (bukan 'role'),
                 // jadi periksa nilai itu untuk menentukan ke mana redirect.

@@ -11,7 +11,7 @@ if (!isset($_SESSION['class']) || strtoupper($_SESSION['class']) !== 'ADMIN') {
 // Ambil daftar anggota kelas 1KA25 dari DB
 $class = '1KA25';
 $users = [];
-$stmt = $conn->prepare("SELECT id, name, email FROM users WHERE class = ? ORDER BY name");
+$stmt = $conn->prepare("SELECT id, name, email, phone FROM users WHERE class = ? ORDER BY name");
 if ($stmt) {
     $stmt->bind_param('s', $class);
     $stmt->execute();
@@ -23,6 +23,7 @@ if ($stmt) {
 // Ambil nama user dari session
 $user_name = $_SESSION['user_name'] ?? $_SESSION['name'] ?? 'Admin User';
 $user_email = $_SESSION['email'] ?? 'admin@payclass.local';
+$user_phone = $_SESSION['phone'] ?? '';
 
 ?>
 <!DOCTYPE html>
@@ -460,6 +461,12 @@ $user_email = $_SESSION['email'] ?? 'admin@payclass.local';
             <div class="user-name"><?php echo htmlspecialchars($user_name); ?></div>
             <div class="user-role">Admin</div>
             <div class="user-email"><?php echo htmlspecialchars($user_email); ?></div>
+            <?php if (!empty($user_phone)): ?>
+            <div class="info-section">
+                <div class="info-label">No. Telepon</div>
+                <div class="info-value"><?php echo htmlspecialchars($user_phone); ?></div>
+            </div>
+            <?php endif; ?>
             
             <div class="divider"></div>
             

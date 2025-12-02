@@ -19,4 +19,17 @@ if ($conn->query($createTableSQL)) {
 } else {
     echo "❌ Error membuat tabel: " . $conn->error;
 }
+
+// Tambahkan kolom `phone` di tabel `users` jika belum ada
+$alterUsersSQL = "ALTER TABLE users ADD COLUMN IF NOT EXISTS phone VARCHAR(20) DEFAULT ''";
+if ($conn->query($alterUsersSQL)) {
+    echo "\n✅ Kolom `phone` pada tabel users berhasil dibuat/ada.";
+} else {
+    // Jika error karena tabel users belum ada, jangan hentikan; tampilkan pesan informatif
+    if (strpos($conn->error, 'doesn\'t exist') !== false || strpos($conn->error, 'does not exist') !== false) {
+        echo "\n⚠️ Tabel `users` belum ditemukan. Silakan buat tabel `users` terlebih dahulu atau jalankan migrasi manual untuk menambahkan kolom `phone`.";
+    } else {
+        echo "\n❌ Error menambah kolom phone: " . $conn->error;
+    }
+}
 ?>

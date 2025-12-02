@@ -1,3 +1,9 @@
+<?php
+session_start();
+$user_name = $_SESSION['name'] ?? 'User';
+$user_email = $_SESSION['email'] ?? '';
+$user_phone = $_SESSION['phone'] ?? '';
+?>
 <!DOCTYPE html>
 <html lang="id">
 
@@ -275,7 +281,7 @@
     <!-- 🏠 HALAMAN UTAMA -->      
     <div id="home">
         <header class="header">  <!-- Alma -->
-            <div class="profile">👤</div>       
+            <div class="profile" onclick="openProfilePage()">👤</div>       
             <div class="logo"> 
                 <h1>PayClass</h1>
                 <p>1KA25</p>
@@ -316,6 +322,26 @@
             <div class="buttons">
                 <button class="btn-back" onclick="closeQRModal()">⬅ Tutup</button>
                 <button class="btn-download" onclick="downloadQR()">⬇ Download</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 👤 HALAMAN PROFILE -->
+    <div id="profilePage" style="display:none; min-height:100vh; padding:20px; background: linear-gradient(135deg, #43085d, #961ccb);">
+        <div class="profile-card" style="background:white; border-radius:15px; padding:40px; max-width:500px; margin:0 auto; text-align:center;">
+            <div class="avatar">👤</div>
+            <div class="user-name"><?php echo htmlspecialchars($user_name); ?></div>
+            <div class="user-role">User</div>
+            <div class="user-email"><?php echo htmlspecialchars($user_email); ?></div>
+            <?php if (!empty($user_phone)): ?>
+            <div class="info-section" style="margin-top:12px;">
+                <div class="info-label">No. Telepon</div>
+                <div class="info-value"><?php echo htmlspecialchars($user_phone); ?></div>
+            </div>
+            <?php endif; ?>
+            <div style="margin-top:18px; display:flex; gap:10px; justify-content:center;">
+                <button class="btn-back" onclick="closeProfilePage()">⬅ Kembali</button>
+                <button class="btn-logout" onclick="logout()">🚪 Logout</button>
             </div>
         </div>
     </div>
@@ -813,6 +839,21 @@
             if (e.target === m) closeQRModal();
         });
         document.addEventListener('keydown', function(e){ if (e.key === 'Escape') closeQRModal(); });
+        
+        // Profile page functions (open/close)
+        function openProfilePage() {
+            const home = document.getElementById('home');
+            const profile = document.getElementById('profilePage');
+            if (home) home.style.display = 'none';
+            if (profile) profile.style.display = 'flex';
+        }
+
+        function closeProfilePage() {
+            const home = document.getElementById('home');
+            const profile = document.getElementById('profilePage');
+            if (profile) profile.style.display = 'none';
+            if (home) home.style.display = 'block';
+        }
     </script>
 </body>
 
