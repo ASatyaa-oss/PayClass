@@ -2,12 +2,6 @@
 
 session_start();
 
-// Redirect to landing page jika belum login
-if (!isset($_SESSION['user_id'])) {
-    header("Location: landing.php");
-    exit();
-}
-
 $errors = [
     'login' => $_SESSION['login_error'] ?? '',
     'register' => $_SESSION['register_error'] ?? ''
