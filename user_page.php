@@ -1,284 +1,28 @@
-<?php
-session_start();
-$user_name = $_SESSION['name'] ?? 'User';
-$user_email = $_SESSION['email'] ?? '';
-$user_class = $_SESSION['class'] ?? '';
-$user_phone = $_SESSION['phone'] ?? '';
-?>
-<!DOCTYPE html>
-<html lang="id">
-
-<head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>PayClass</title>
-    <link href="https://fonts.googleapis.com/css2?family=Libertinus+Keyboard&family=Luckiest+Guy&display=swap"
-        rel="stylesheet">
-
-    <style>
-        body {                  /* Nurin */
-            margin: 0;             /* supaya halaman rapih */ 
-            background-image: url(https://i.pinimg.com/736x/b0/21/06/b0210669be120b2c1b2d2cc4f25bfcbd.jpg); /* gambar latar belakang */
-            background-repeat: no-repeat;    /* supaya tidak mengulang */
-            background-attachment: fixed;       /* supaya tidak bergerak */
-            background-position: center;        /* supaya di tengah*/
-            background-size: cover;            /* supaya full */  
-            font-family: "Times New Roman", Times, serif;   /* font payclass */
-        }
-
-        #home {
-            display: block;
-            padding: 20px;
-        }
-
-        .header {           /* alma */
-            display: flex;          /* letak header */
-            justify-content: space-between;     /* posisi profile dan badges antara payclass */
-            align-items: center;    /* posisi tengah profile dan badges */
-            padding: 15px 30px;     /* profile ga gepeng */
-        }
- 
-        .profile {          /* Alma */
-            width: 60px; /* bentuk ikon profile */
-            height: 60px; /* ketinggian ikon profile */
-            border: 3px solid #2f253f; /* outline  ikon profile */ 
-            border-radius: 50%;
-            display: flex; /* letak ikon profile */
-            justify-content: center; /* ikon profile agar menjadi png /            align-items: center; / posisi ikon profile */
-            background: linear-gradient(135deg, #43085d, #961ccb); /* warna ikon profile */
-            font-size: 25px;  /* ukuran ikon profile */
-        }
-
-        .logo {                 /* 1KA25  alma */
-            text-align: center;         /* Posisi 1KA25*/ 
-            color: #ccc; /* warna 1KA25 */ 
-        }
-
-        .logo h1 {                  /* Nurin */
-            font-size: 100px;       /* Ukuran 1KA25 */
-            margin: 0;              /* Supaya rapih payclass */
-            color: #d3d3ff;        /* warna payclass */
-            text-shadow: #000 4px 2px 4px; /*bayangan payclass */
-            font-family: "Luckiest Guy", cursive; /*font payclass */
-        }
-
-        .logo p {                           /* nURIN */
-            margin: 0;
-            font-size: 16px;                /* ukuran font 1KA25
-            color: #fff;                /* warna 1KA25 */
-            letter-spacing: 2px;            /* spacing huruf 1KA25 */
-        }
-
-        .status {                /* Nurin */
-            text-align: right;              /* posisi status lunas */
-            font-size: x-large;             /* ukuran status lunas */
-        }
-
-        .p2 {                   /* Nurin */ 
-            margin: 0;              /* supaya rapih status lunas */
-            font-weight: bold;      /* Bold status lunas */
-            color: #fff;        /* warna status lunas */
-        }
-
-        .badge {                /* Alma */
-            display: inline-block;      /* posisi lunas */
-            margin-top: 5px;      /* jarak status lunas */
-            background-color: #b2ff59;  /* warna latar belakang lunas */
-            color: #1b5e20; /* warna teks lunas */
-            font-weight: bold;      /* Bold teks lunas */
-            padding: 5px 15px;  /* jarak teks lunas */
-            border-radius: 20px;    /* border lunas */
-            font-size: large;   /* ukuran teks lunas */
-        }
-
-        .container {
-            display: flex;          
-            gap: 20px;
-            flex-wrap: nowrap;
-
-        }
-
-        .box {      
-            margin: 20px 10px;    
-            padding: 45px;
-            background-color: rgb(30, 0, 99);
-            color: #fff;
-            font-size: 20px;
-            text-align: center;
-            border-style: outset;
-            border-width: 10px;
-            border-radius: 15px;
-            display: inline-block;
-            width: 30%;
-            vertical-align: top;
-        }
-
-        .box .small {
-            font-size: 14px;      
-            margin-top: 10px;
-            color: #b2ff59;
-        }
-
-        .button-container {     /* Nurin */
-            display: flex;      /* jarak button */
-            flex-direction: column;     /* posisi button */
-            gap: 15px;    /* jarak button*/
-            padding: 20px;      /* ketebalan button */
-        }
-
-        button {
-            width: 100%;
-            border: none;
-            background: none;
-            padding: 0;
-            cursor: pointer;
-        }
-
-        .text3,
-        .text4,
-        .text5 {       /* Nurin */
-            color: rgb(42, 36, 134); /* warna tulisan button */
-            border-style: outset;   /* outline button */
-            border-width: 12px;     /* 3D outline oval */
-            border-radius: 20px;    /* biar oval */
-            padding: 20px;        /* biar ada background button */
-            background-color: rgb(230, 230, 254);   /* warna background button */
-            font-size: x-large;  /* ukuran tulisan button */
-            text-align: center;  /* posisi tulisan button */
-        }
-
-        #anggota,
-        #pengeluaran {
-            display: none;
-            min-height: 100vh;
-            padding: 20px;
-            background: #f5f6fa;
-        }
-
-        #anggota h1,
-        #pengeluaran h1 {
-            text-align: center;
-            color: #2f3640;
-        }
-
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 20px;
-            background: #fff;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-        }
-
-        th,
-    <script>
-      document.addEventListener('DOMContentLoaded', function () {
-        const pemasukanEl = document.getElementById('pemasukanValue');
-        const kenaikanEl = document.getElementById('kenaikanValue');
-        // copy pemasukan to kenaikan
-        if (pemasukanEl && kenaikanEl) {
-          kenaikanEl.textContent = pemasukanEl.textContent;
-        }
-      });
-    </script>
-        td {
-            border: 1px solid #ccc;
-            padding: 10px;
-            text-align: center;
-        }
-
-        th {
-            background: #522780;
-            color: #fff;
-        }
-
-        tr:nth-child(even) {
-            background: #f1f2f6;
-        }
-
-        input[type="date"],
-        input[type="text"] {
-            width: 95%;
-            padding: 5px;
-            border: 1px solid #aaa;
-            border-radius: 4px;
-            font-size: 16px;
-        }
-
-        input[type="checkbox"] {
-            transform: scale(1.3);
-            cursor: pointer;
-        }
-
-        /* View Only Styles */
-        input[type="date"]:disabled,
-        input[type="text"]:disabled {
-            background-color: #f5f5f5;
-            color: #666;
-            cursor: not-allowed;
-            border: 1px solid #ddd;
-        }
-
-        input[type="checkbox"]:disabled {
-            cursor: not-allowed;
-            opacity: 0.7;
-        }
-
-        button:disabled {
-            opacity: 0.5;
-            cursor: not-allowed;
-        }
-
-        .back-btn {
-            margin: 20px 0;
-            padding: 10px 20px;
-            background: #522780;
-            color: #fff;
-            border: none;
-            border-radius: 8px;
-            cursor: pointer;
-        }
-
-        .total {
-            text-align: right;
-            margin-top: 20px;
-            font-size: 20px;
-            font-weight: bold;
-            color: #2e7d32;
-        }
-        /* QR modal styles */
-        .qr-modal {
-            display: none;
-            position: fixed;
-            z-index: 1200;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0,0,0,0.5);
-            align-items: center;
-            justify-content: center;
-            padding: 20px;
-        }
-        .qr-modal.show { display: flex; }
-        .qr-box {
-            background: #fff;
-            border-radius: 12px;
-            padding: 22px 28px;
-            width: 380px;
-            max-width: calc(100% - 40px);
-            text-align: center;
-            box-shadow: 0 12px 30px rgba(0,0,0,0.18);
-        }
-        .qr-box .title { font-weight:700; margin-bottom:8px; }
-        .qr-box img { margin:12px 0; border:1px solid #ccc; border-radius:10px; padding:4px; width:220px; height:auto; background:white; }
-        .qr-box .note { font-size:13px; color:#666; margin-bottom:12px; }
-        .qr-box .buttons { display:flex; gap:10px; justify-content:space-between; }
-        .qr-box .buttons button { flex:1; }
-
-<style>
-    /* Profile card styles (copied from admin page for consistency) */
-    #profilePage {
-        display: none;
+    <!-- 👥 HALAMAN ANGGOTA (view-only, data dari DB) -->
+    <div id="anggota">
+        <button class="back-btn" onclick="showHome()">⬅ Kembali</button>
+        <h1>📊 Tabel Pembayaran Uang Kas</h1>
+        <table id="anggotaTable">
+            <tr>
+                <th>No</th>
+                <th>Nama</th>
+                <th>Minggu 1</th>
+                <th>Minggu 2</th>
+                <th>Minggu 3</th>
+                <th>Minggu 4</th>
+            </tr>
+            <?php foreach ($users as $index => $u): ?>
+            <tr>
+                <td><?php echo $index + 1; ?></td>
+                <td class="editable-name" data-id="<?php echo (int)$u['id']; ?>"><?php echo htmlspecialchars($u['name']); ?></td>
+                <td><input type="date" disabled><input type="checkbox" disabled></td>
+                <td><input type="date" disabled><input type="checkbox" disabled></td>
+                <td><input type="date" disabled><input type="checkbox" disabled></td>
+                <td><input type="date" disabled><input type="checkbox" disabled></td>
+            </tr>
+            <?php endforeach; ?>
+        </table>
+    </div>
         min-height: 100vh;
         padding: 20px;
         background: linear-gradient(135deg, #43085d, #961ccb);
@@ -351,8 +95,11 @@ $user_phone = $_SESSION['phone'] ?? '';
             <button onclick="showPengeluaran()">
                 <div class="text4">PENGELUARAN</div>
             </button>
+            <button onclick="window.location.href='pemasukan_bulanan_user.php'">
+                <div class="text5">PEMASUKAN BULANAN</div>
+            </button>
             <button onclick="showAnggota()">
-                <div class="text5">ANGGOTA</div>
+                <div class="text3">ANGGOTA</div>
             </button>
         </div>
     </div>
@@ -834,32 +581,100 @@ $user_phone = $_SESSION['phone'] ?? '';
             updateSaldo();
         }
 
-        // ✅ Muat ulang dari localStorage
+        // ✅ Muat ulang dari DATABASE (read-only endpoint untuk user) + localStorage
         function muatData() {
-            const anggotaData = JSON.parse(localStorage.getItem("anggotaKas") || "[]");
             const rows = document.querySelectorAll('#anggotaTable tr');
-            anggotaData.forEach((data, i) => {
-                const row = rows[i + 1];
-                if (row) {
-                    row.cells[2].querySelector('input').value = data.date || "";
-                    const cbs = row.querySelectorAll('input[type="checkbox"]');
-                    data.checks?.forEach((v, j) => { if (cbs[j]) cbs[j].checked = v; });
-                }
-            });
 
+            // Coba load dari server (read-only endpoint untuk user)
+            try {
+                const xhr = new XMLHttpRequest();
+                xhr.open('GET', 'load_anggota_data_user.php', false); // synchronous
+                xhr.send();
+
+                if (xhr.status === 200) {
+                    const dbData = JSON.parse(xhr.responseText);
+
+                    // Buat map data dari DB berdasarkan user_id
+                    const dbMap = {};
+                    if (dbData.success && dbData.data && Array.isArray(dbData.data)) {
+                        dbData.data.forEach(item => {
+                            dbMap[item.user_id] = item.weeks_data;
+                        });
+                    }
+
+                    // Restore data ke table dari DB
+                    let hasData = false;
+                    rows.forEach((row, i) => {
+                        if (i === 0) return;
+                        const nameCell = row.querySelector('.editable-name');
+                        const userId = nameCell ? parseInt(nameCell.getAttribute('data-id')) : null;
+
+                        if (userId && dbMap[userId] && Array.isArray(dbMap[userId])) {
+                            hasData = true;
+                            const weeks = dbMap[userId];
+                            for (let w = 0; w < 4; w++) {
+                                const cell = row.cells[2 + w];
+                                const dateInput = cell.querySelector('input[type="date"]');
+                                const checkboxInput = cell.querySelector('input[type="checkbox"]');
+                                if (weeks[w]) {
+                                    if (dateInput) dateInput.value = weeks[w].date || "";
+                                    if (checkboxInput) checkboxInput.checked = weeks[w].checked === true;
+                                }
+                            }
+                        }
+                    });
+
+                    // Jika DB tidak ada data, load dari localStorage sebagai fallback
+                    if (!hasData) {
+                        loadFromLocalStorage(rows);
+                    }
+                } else {
+                    loadFromLocalStorage(rows);
+                }
+            } catch (e) {
+                console.error('DB load failed:', e);
+                loadFromLocalStorage(rows);
+            }
+
+            // Load pengeluaran dari localStorage
             const pengeluaranData = JSON.parse(localStorage.getItem("pengeluaranKas") || "[]");
             const table = document.getElementById("pengeluaranTable");
-            pengeluaranData.forEach((data, i) => {
-                if (i >= table.rows.length - 1) tambahBaris();
-                const row = table.rows[i + 1];
-                row.cells[1].querySelector('input').value = data.tanggal || "";
-                row.cells[2].querySelector('input').value = data.keterangan || "";
-                row.cells[3].querySelector('input').value = data.biaya || "";
-            });
+            if (table && pengeluaranData.length > 0) {
+                pengeluaranData.forEach((data, i) => {
+                    if (i >= table.rows.length - 1) tambahBaris();
+                    const row = table.rows[i + 1];
+                    if (row) {
+                        const tCell = row.cells[1]?.querySelector('input');
+                        const kCell = row.cells[2]?.querySelector('input');
+                        const bCell = row.cells[3]?.querySelector('input');
+                        if (tCell) tCell.value = data.tanggal || "";
+                        if (kCell) kCell.value = data.keterangan || "";
+                        if (bCell) bCell.value = data.biaya || "";
+                    }
+                });
+            }
 
             hitungTotal();
-            attachCheckboxListeners();
             updateSaldo();
+        }
+
+        // Helper: load dari localStorage
+        function loadFromLocalStorage(rows) {
+            const anggotaData = JSON.parse(localStorage.getItem("anggotaKas") || "[]");
+            anggotaData.forEach((data, i) => {
+                const row = rows[i + 1];
+                if (row && data.weeks && Array.isArray(data.weeks)) {
+                    for (let w = 0; w < 4; w++) {
+                        const cell = row.cells[2 + w];
+                        const dateInput = cell.querySelector('input[type="date"]');
+                        const checkboxInput = cell.querySelector('input[type="checkbox"]');
+                        if (data.weeks[w]) {
+                            if (dateInput) dateInput.value = data.weeks[w].date || "";
+                            if (checkboxInput) checkboxInput.checked = data.weeks[w].checked === true;
+                        }
+                    }
+                }
+            });
         }
 
         // QR modal functions
