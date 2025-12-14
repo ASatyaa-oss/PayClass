@@ -1,30 +1,21 @@
-name: Deploy Website ke InfinityFree
-
+name: Deploy Website to InfinityFree
 on:
   push:
     branches:
-      - main  # PPastikan nama branch utama kalian 'main' atau 'master'
+      - main  # Pastikan ini sesuai nama branch utama kamu (bisa 'main' atau 'master')
 
 jobs:
   web-deploy:
-    name: 🎉 Deploy
+    name: Deploy
     runs-on: ubuntu-latest
     steps:
-    - name: 🚚 Ambil kodingan terbaru (Checkout)
+    - name: 📂 Get latest code
       uses: actions/checkout@v4
-    
-    - name: 📂 Upload ke InfinityFree (FTP)
+
+    - name: 🚀 Sync files to InfinityFree
       uses: SamKirkland/FTP-Deploy-Action@v4.3.5
       with:
-        # Data dari Screenshot kamu:
-        server: ftpupload.net
-        username: if0_40507318
-        
-        # Password diambil dari Secret GitHub (yang dibuat di Langkah 1):
+        server: ${{ secrets.FTP_SERVER }}
+        username: ${{ secrets.FTP_USERNAME }}
         password: ${{ secrets.FTP_PASSWORD }}
-        
-        # PENTING: InfinityFree wajib taruh file di dalam folder htdocs
-        server-dir: ./htdocs/
-        
-        # Protokol (biarkan false untuk FTP biasa agar lebih cepat/kompatibel)
-        secure: false
+        server-dir: ./htdocs/  # PENTING: InfinityFree mewajibkan file ditaruh di dalam folder htdocs
