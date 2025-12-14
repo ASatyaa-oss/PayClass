@@ -16,7 +16,8 @@ if ($stmt) {
     $stmt->bind_param('s', $class);
     $stmt->execute();
     $res = $stmt->get_result();
-    if ($res) $users = $res->fetch_all(MYSQLI_ASSOC);
+    if ($res)
+        $users = $res->fetch_all(MYSQLI_ASSOC);
     $stmt->close();
 }
 
@@ -37,14 +38,22 @@ $user_phone = $_SESSION['phone'] ?? '';
         rel="stylesheet">
 
     <style>
-        body {                  /* Nurin */
-            margin: 0;             /* supaya halaman rapih */ 
-            background-image: url(https://i.pinimg.com/736x/b0/21/06/b0210669be120b2c1b2d2cc4f25bfcbd.jpg); /* gambar latar belakang */
-            background-repeat: no-repeat;    /* supaya tidak mengulang */
-            background-attachment: fixed;       /* supaya tidak bergerak */
-            background-position: center;        /* supaya di tengah*/
-            background-size: cover;            /* supaya full */  
-            font-family: "Times New Roman", Times, serif;   /* font payclass */
+        body {
+            /* Nurin */
+            margin: 0;
+            /* supaya halaman rapih */
+            background-image: url(https://i.pinimg.com/736x/b0/21/06/b0210669be120b2c1b2d2cc4f25bfcbd.jpg);
+            /* gambar latar belakang */
+            background-repeat: no-repeat;
+            /* supaya tidak mengulang */
+            background-attachment: fixed;
+            /* supaya tidak bergerak */
+            background-position: center;
+            /* supaya di tengah*/
+            background-size: cover;
+            /* supaya full */
+            font-family: "Times New Roman", Times, serif;
+            /* font payclass */
         }
 
         #home {
@@ -52,14 +61,20 @@ $user_phone = $_SESSION['phone'] ?? '';
             padding: 20px;
         }
 
-        .header {           /* alma */
-            display: flex;          /* letak header */
-            justify-content: space-between;     /* posisi profile dan badges antara payclass */
-            align-items: center;    /* posisi tengah profile dan badges */
-            padding: 15px 30px;     /* profile ga gepeng */
+        .header {
+            /* alma */
+            display: flex;
+            /* letak header */
+            justify-content: space-between;
+            /* posisi profile dan badges antara payclass */
+            align-items: center;
+            /* posisi tengah profile dan badges */
+            padding: 15px 30px;
+            /* profile ga gepeng */
         }
- 
-        .profile-menu {          /* Profile dropdown */
+
+        .profile-menu {
+            /* Profile dropdown */
             position: relative;
             display: flex;
             align-items: center;
@@ -67,16 +82,25 @@ $user_phone = $_SESSION['phone'] ?? '';
             cursor: pointer;
         }
 
-        .profile-icon {          /* Alma */
-            width: 50px; /* bentuk ikon profile */
-            height: 50px; /* ketinggian ikon profile */
-            border: 3px solid #2f253f; /* outline  ikon profile */ 
+        .profile-icon {
+            /* Alma */
+            width: 50px;
+            /* bentuk ikon profile */
+            height: 50px;
+            /* ketinggian ikon profile */
+            border: 3px solid #2f253f;
+            /* outline  ikon profile */
             border-radius: 50%;
-            display: flex; /* letak ikon profile */
-            justify-content: center; /* ikon profile agar menjadi png */
-            align-items: center; /* posisi ikon profile */
-            background: linear-gradient(135deg, #43085d, #961ccb); /* warna ikon profile */
-            font-size: 22px;  /* ukuran ikon profile */
+            display: flex;
+            /* letak ikon profile */
+            justify-content: center;
+            /* ikon profile agar menjadi png */
+            align-items: center;
+            /* posisi ikon profile */
+            background: linear-gradient(135deg, #43085d, #961ccb);
+            /* warna ikon profile */
+            font-size: 22px;
+            /* ukuran ikon profile */
             transition: transform 0.2s;
         }
 
@@ -104,7 +128,7 @@ $user_phone = $_SESSION['phone'] ?? '';
             padding: 40px;
             width: 100%;
             max-width: 500px;
-            box-shadow: 0 8px 30px rgba(0,0,0,0.3);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
             text-align: center;
         }
 
@@ -201,57 +225,85 @@ $user_phone = $_SESSION['phone'] ?? '';
             background: #d32f2f;
         }
 
-        .logo {                 /* 1KA25  alma */
-            text-align: center;         /* Posisi 1KA25*/ 
-            color: #ccc; /* warna 1KA25 */ 
+        .logo {
+            /* 1KA25  alma */
+            text-align: center;
+            /* Posisi 1KA25*/
+            color: #ccc;
+            /* warna 1KA25 */
         }
 
-        .logo h1 {                  /* Nurin */
-            font-size: 100px;       /* Ukuran 1KA25 */
-            margin: 0;              /* Supaya rapih payclass */
-            color: #d3d3ff;        /* warna payclass */
-            text-shadow: #000 4px 2px 4px; /*bayangan payclass */
-            font-family: "Luckiest Guy", cursive; /*font payclass */
-        }
-
-        .logo p {                           /* nURIN */
+        .logo h1 {
+            /* Nurin */
+            font-size: 100px;
+            /* Ukuran 1KA25 */
             margin: 0;
-            font-size: 16px;                /* ukuran font 1KA25
+            /* Supaya rapih payclass */
+            color: #d3d3ff;
+            /* warna payclass */
+            text-shadow: #000 4px 2px 4px;
+            /*bayangan payclass */
+            font-family: "Luckiest Guy", cursive;
+            /*font payclass */
+        }
+
+        .logo p {
+            /* nURIN */
+            margin: 0;
+            font-size: 16px;
+            /* ukuran font 1KA25
             color: #fff;                /* warna 1KA25 */
-            letter-spacing: 2px;            /* spacing huruf 1KA25 */
+            letter-spacing: 2px;
+            /* spacing huruf 1KA25 */
         }
 
-        .status {                /* Nurin */
-            text-align: right;              /* posisi status lunas */
-            font-size: x-large;             /* ukuran status lunas */
+        .status {
+            /* Nurin */
+            text-align: right;
+            /* posisi status lunas */
+            font-size: x-large;
+            /* ukuran status lunas */
         }
 
-        .p2 {                   /* Nurin */ 
-            margin: 0;              /* supaya rapih status lunas */
-            font-weight: bold;      /* Bold status lunas */
-            color: #fff;        /* warna status lunas */
+        .p2 {
+            /* Nurin */
+            margin: 0;
+            /* supaya rapih status lunas */
+            font-weight: bold;
+            /* Bold status lunas */
+            color: #fff;
+            /* warna status lunas */
         }
 
-        .badge {                /* Alma */
-            display: inline-block;      /* posisi lunas */
-            margin-top: 5px;      /* jarak status lunas */
-            background-color: #b2ff59;  /* warna latar belakang lunas */
-            color: #1b5e20; /* warna teks lunas */
-            font-weight: bold;      /* Bold teks lunas */
-            padding: 5px 15px;  /* jarak teks lunas */
-            border-radius: 20px;    /* border lunas */
-            font-size: large;   /* ukuran teks lunas */
+        .badge {
+            /* Alma */
+            display: inline-block;
+            /* posisi lunas */
+            margin-top: 5px;
+            /* jarak status lunas */
+            background-color: #b2ff59;
+            /* warna latar belakang lunas */
+            color: #1b5e20;
+            /* warna teks lunas */
+            font-weight: bold;
+            /* Bold teks lunas */
+            padding: 5px 15px;
+            /* jarak teks lunas */
+            border-radius: 20px;
+            /* border lunas */
+            font-size: large;
+            /* ukuran teks lunas */
         }
 
         .container {
-            display: flex;          
+            display: flex;
             gap: 20px;
             flex-wrap: nowrap;
 
         }
 
-        .box {      
-            margin: 20px 10px;    
+        .box {
+            margin: 20px 10px;
             padding: 45px;
             background-color: rgb(30, 0, 99);
             color: #fff;
@@ -266,16 +318,21 @@ $user_phone = $_SESSION['phone'] ?? '';
         }
 
         .box .small {
-            font-size: 14px;      
+            font-size: 14px;
             margin-top: 10px;
             color: #b2ff59;
         }
 
-        .button-container {     /* Nurin */
-            display: flex;      /* jarak button */
-            flex-direction: column;     /* posisi button */
-            gap: 15px;    /* jarak button*/
-            padding: 20px;      /* ketebalan button */
+        .button-container {
+            /* Nurin */
+            display: flex;
+            /* jarak button */
+            flex-direction: column;
+            /* posisi button */
+            gap: 15px;
+            /* jarak button*/
+            padding: 20px;
+            /* ketebalan button */
         }
 
         button {
@@ -288,15 +345,24 @@ $user_phone = $_SESSION['phone'] ?? '';
 
         .text3,
         .text4,
-        .text5 {       /* Nurin */
-            color: rgb(42, 36, 134); /* warna tulisan button */
-            border-style: outset;   /* outline button */
-            border-width: 12px;     /* 3D outline oval */
-            border-radius: 20px;    /* biar oval */
-            padding: 20px;        /* biar ada background button */
-            background-color: rgb(230, 230, 254);   /* warna background button */
-            font-size: x-large;  /* ukuran tulisan button */
-            text-align: center;  /* posisi tulisan button */
+        .text5 {
+            /* Nurin */
+            color: rgb(42, 36, 134);
+            /* warna tulisan button */
+            border-style: outset;
+            /* outline button */
+            border-width: 12px;
+            /* 3D outline oval */
+            border-radius: 20px;
+            /* biar oval */
+            padding: 20px;
+            /* biar ada background button */
+            background-color: rgb(230, 230, 254);
+            /* warna background button */
+            font-size: x-large;
+            /* ukuran tulisan button */
+            text-align: center;
+            /* posisi tulisan button */
         }
 
         #anggota,
@@ -322,16 +388,7 @@ $user_phone = $_SESSION['phone'] ?? '';
         }
 
         th,
-    <script>
-      document.addEventListener('DOMContentLoaded', function () {
-        const pemasukanEl = document.getElementById('pemasukanValue');
-        const kenaikanEl = document.getElementById('kenaikanValue');
-        // copy pemasukan to kenaikan
-        if (pemasukanEl && kenaikanEl) {
-          kenaikanEl.textContent = pemasukanEl.textContent;
-        }
-      });
-    </script>
+
         td {
             border: 1px solid #ccc;
             padding: 10px;
@@ -362,7 +419,9 @@ $user_phone = $_SESSION['phone'] ?? '';
         }
 
         /* small helper style for error highlight */
-        .input-error { border-color: #e53935 !important; }
+        .input-error {
+            border-color: #e53935 !important;
+        }
 
         .back-btn {
             margin: 20px 0;
@@ -381,6 +440,7 @@ $user_phone = $_SESSION['phone'] ?? '';
             font-weight: bold;
             color: #2e7d32;
         }
+
         /* QR modal styles */
         .qr-modal {
             display: none;
@@ -390,12 +450,16 @@ $user_phone = $_SESSION['phone'] ?? '';
             top: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0,0,0,0.5);
+            background: rgba(0, 0, 0, 0.5);
             align-items: center;
             justify-content: center;
             padding: 20px;
         }
-        .qr-modal.show { display: flex; }
+
+        .qr-modal.show {
+            display: flex;
+        }
+
         .qr-box {
             background: #fff;
             border-radius: 12px;
@@ -403,25 +467,51 @@ $user_phone = $_SESSION['phone'] ?? '';
             width: 380px;
             max-width: calc(100% - 40px);
             text-align: center;
-            box-shadow: 0 12px 30px rgba(0,0,0,0.18);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.18);
         }
-        .qr-box .title { font-weight:700; margin-bottom:8px; }
-        .qr-box img { margin:12px 0; border:1px solid #ccc; border-radius:10px; padding:4px; width:220px; height:auto; background:white; }
-        .qr-box .note { font-size:13px; color:#666; margin-bottom:12px; }
-        .qr-box .buttons { display:flex; gap:10px; justify-content:space-between; }
-        .qr-box .buttons button { flex:1; }
+
+        .qr-box .title {
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .qr-box img {
+            margin: 12px 0;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            padding: 4px;
+            width: 220px;
+            height: auto;
+            background: white;
+        }
+
+        .qr-box .note {
+            font-size: 13px;
+            color: #666;
+            margin-bottom: 12px;
+        }
+
+        .qr-box .buttons {
+            display: flex;
+            gap: 10px;
+            justify-content: space-between;
+        }
+
+        .qr-box .buttons button {
+            flex: 1;
+        }
     </style>
 </head>
 
 <body>
 
-    <!-- 🏠 HALAMAN UTAMA -->      
+    <!-- 🏠 HALAMAN UTAMA -->
     <div id="home">
-        <header class="header">  <!-- Alma -->
+        <header class="header"> <!-- Alma -->
             <div class="profile-menu" onclick="openProfilePage()">
                 <div class="profile-icon">👤</div>
-            </div>       
-            <div class="logo"> 
+            </div>
+            <div class="logo">
                 <h1>PayClass</h1>
                 <p>1KA25</p>
             </div>
@@ -434,7 +524,8 @@ $user_phone = $_SESSION['phone'] ?? '';
             <div class="box" id="saldo">Saldo Terkini: <span id="saldoValue">Rp. 0</span>
                 <div class="small">Kenaikan: <span id="kenaikanValue">Rp. 0</span></div>
             </div>
-            <div class="box" id="boxPengeluaranBulanan">Pengeluaran Bulan Ini: <span id="pengeluaranValue">Rp. 0</span></div>
+            <div class="box" id="boxPengeluaranBulanan">Pengeluaran Bulan Ini: <span id="pengeluaranValue">Rp. 0</span>
+            </div>
             <div class="box" id="pemasukan">Pemasukan Bulan ini: <span id="pemasukanValue">Rp. 0</span></div>
         </div>
 
@@ -461,26 +552,26 @@ $user_phone = $_SESSION['phone'] ?? '';
             <div class="user-name"><?php echo htmlspecialchars($user_name); ?></div>
             <div class="user-role">Admin</div>
             <div class="user-email"><?php echo htmlspecialchars($user_email); ?></div>
-            
+
             <div class="divider"></div>
-            
+
             <div class="info-section">
                 <div class="info-label">Kelas</div>
                 <div class="info-value">1KA25</div>
             </div>
-            
+
             <div class="info-section">
                 <div class="info-label">Status</div>
                 <div class="info-value">Administrator</div>
             </div>
-            
+
             <?php if (!empty($user_phone)): ?>
-            <div class="info-section">
-                <div class="info-label">No. Telepon</div>
-                <div class="info-value"><?php echo htmlspecialchars($user_phone); ?></div>
-            </div>
+                <div class="info-section">
+                    <div class="info-label">No. Telepon</div>
+                    <div class="info-value"><?php echo htmlspecialchars($user_phone); ?></div>
+                </div>
             <?php endif; ?>
-            
+
             <div class="btn-group">
                 <button class="btn-back" onclick="closeProfilePage()">⬅ Kembali</button>
                 <button class="btn-logout" onclick="logout()">🚪 Logout</button>
@@ -516,14 +607,16 @@ $user_phone = $_SESSION['phone'] ?? '';
                 <th>Minggu 4</th>
             </tr>
             <?php foreach ($users as $index => $u): ?>
-            <tr>
-                <td><?php echo $index + 1; ?></td>
-                <td class="editable-name" data-id="<?php echo (int)$u['id']; ?>"><?php echo htmlspecialchars($u['name']); ?></td>
-                <td><input type="date"><input type="checkbox"></td>
-                <td><input type="date"><input type="checkbox"></td>
-                <td><input type="date"><input type="checkbox"></td>
-                <td><input type="date"><input type="checkbox"></td>
-            </tr>
+                <tr>
+                    <td><?php echo $index + 1; ?></td>
+                    <td class="editable-name" data-id="<?php echo (int) $u['id']; ?>">
+                        <?php echo htmlspecialchars($u['name']); ?>
+                    </td>
+                    <td><input type="date"><input type="checkbox"></td>
+                    <td><input type="date"><input type="checkbox"></td>
+                    <td><input type="date"><input type="checkbox"></td>
+                    <td><input type="date"><input type="checkbox"></td>
+                </tr>
             <?php endforeach; ?>
         </table>
     </div>
@@ -543,7 +636,8 @@ $user_phone = $_SESSION['phone'] ?? '';
                 <td>1</td>
                 <td><input type="date" onchange="simpanData()"></td>
                 <td><input type="text" placeholder="Contoh: Beli spidol" onchange="simpanData()"></td>
-                <td><input type="text" placeholder="25000" oninput="enforceBiayaMax(this); hitungTotal()" onchange="simpanData()"></td>
+                <td><input type="text" placeholder="25000" oninput="enforceBiayaMax(this); hitungTotal()"
+                        onchange="simpanData()"></td>
             </tr>
         </table>
         <button onclick="tambahBaris()">+ Tambah Baris</button>
@@ -563,14 +657,21 @@ $user_phone = $_SESSION['phone'] ?? '';
             window.location.href = 'pembayaran.php?tab=' + encodeURIComponent(tab) + '&from=admin';
         }
 
-        document.addEventListener("DOMContentLoaded", function() {
+        document.addEventListener("DOMContentLoaded", function () {
             // Delay sebentar agar table sudah ter-render
-            setTimeout(function() {
+            setTimeout(function () {
                 muatData();
                 hitungTotal();
                 attachCheckboxListeners();
                 updateSaldo();
                 updatePemasukanBulanan();
+
+                // Logic pindahan dari style block: copy pemasukan to kenaikan
+                const pemasukanEl = document.getElementById('pemasukanValue');
+                const kenaikanEl = document.getElementById('kenaikanValue');
+                if (pemasukanEl && kenaikanEl) {
+                    kenaikanEl.textContent = pemasukanEl.textContent;
+                }
 
                 // restore requested tab if passed
                 const params = new URLSearchParams(window.location.search);
@@ -607,7 +708,7 @@ $user_phone = $_SESSION['phone'] ?? '';
                 cb.onchange = function () {
                     // Debounce: tunggu 300ms sebelum save
                     clearTimeout(simpanDataTimeout);
-                    simpanDataTimeout = setTimeout(function() {
+                    simpanDataTimeout = setTimeout(function () {
                         simpanData();
                     }, 300);
                 };
@@ -618,7 +719,7 @@ $user_phone = $_SESSION['phone'] ?? '';
             dates.forEach(dt => {
                 dt.onchange = function () {
                     clearTimeout(simpanDataTimeout);
-                    simpanDataTimeout = setTimeout(function() {
+                    simpanDataTimeout = setTimeout(function () {
                         simpanData();
                     }, 300);
                 };
@@ -688,7 +789,7 @@ $user_phone = $_SESSION['phone'] ?? '';
                 if (i === 0) return;
                 const nameCell = row.querySelector('.editable-name');
                 const userId = nameCell ? parseInt(nameCell.getAttribute('data-id')) : null;
-                
+
                 // Simpan semua 4 minggu (tanggal + checkbox masing-masing)
                 const weeks = [];
                 for (let w = 0; w < 4; w++) {
@@ -714,12 +815,12 @@ $user_phone = $_SESSION['phone'] ?? '';
                     const xhr = new XMLHttpRequest();
                     xhr.open('POST', 'save_anggota_data.php', true);
                     xhr.setRequestHeader('Content-Type', 'application/json');
-                    xhr.onload = function() {
+                    xhr.onload = function () {
                         if (xhr.status !== 200) {
                             console.warn('DB save failed with status:', xhr.status);
                         }
                     };
-                    xhr.onerror = function() {
+                    xhr.onerror = function () {
                         console.warn('DB save error - data tetap tersimpan di localStorage');
                     };
                     xhr.send(JSON.stringify(anggotaData));
@@ -739,7 +840,7 @@ $user_phone = $_SESSION['phone'] ?? '';
                 });
             });
             localStorage.setItem("pengeluaranKas", JSON.stringify(pengeluaranData));
-            
+
             updateSaldo();
             updatePemasukanBulanan(); // Update pemasukan setelah data disimpan
         }
@@ -747,16 +848,16 @@ $user_phone = $_SESSION['phone'] ?? '';
         // ✅ Muat ulang dari DATABASE + localStorage (HANYA dipanggil saat page load)
         function muatData() {
             const rows = document.querySelectorAll('#anggotaTable tr');
-            
+
             // Coba load dari DB dulu
             try {
                 const xhr = new XMLHttpRequest();
                 xhr.open('GET', 'load_anggota_data.php', false); // synchronous
                 xhr.send();
-                
+
                 if (xhr.status === 200) {
                     const dbData = JSON.parse(xhr.responseText);
-                    
+
                     // Buat map data dari DB berdasarkan user_id
                     const dbMap = {};
                     if (dbData.success && dbData.data && Array.isArray(dbData.data)) {
@@ -771,7 +872,7 @@ $user_phone = $_SESSION['phone'] ?? '';
                         if (i === 0) return;
                         const nameCell = row.querySelector('.editable-name');
                         const userId = nameCell ? parseInt(nameCell.getAttribute('data-id')) : null;
-                        
+
                         if (userId && dbMap[userId] && Array.isArray(dbMap[userId])) {
                             hasData = true;
                             const weeks = dbMap[userId];
@@ -786,7 +887,7 @@ $user_phone = $_SESSION['phone'] ?? '';
                             }
                         }
                     });
-                    
+
                     // Jika DB ada data, langsung proses. Jika tidak, load dari localStorage
                     if (!hasData) {
                         loadFromLocalStorage(rows);
@@ -814,7 +915,7 @@ $user_phone = $_SESSION['phone'] ?? '';
                     }
                 });
             }
-            
+
             // Jangan panggil attachCheckboxListeners di sini, panggil di bawah
         }
 
@@ -842,14 +943,14 @@ $user_phone = $_SESSION['phone'] ?? '';
             const m = document.getElementById('qrModal');
             if (!m) return;
             m.classList.add('show');
-            m.setAttribute('aria-hidden','false');
+            m.setAttribute('aria-hidden', 'false');
         }
 
         function closeQRModal() {
             const m = document.getElementById('qrModal');
             if (!m) return;
             m.classList.remove('show');
-            m.setAttribute('aria-hidden','true');
+            m.setAttribute('aria-hidden', 'true');
         }
 
         function downloadQR() {
@@ -866,12 +967,12 @@ $user_phone = $_SESSION['phone'] ?? '';
         }
 
         // close QR modal when clicking outside box or pressing Escape
-        document.addEventListener('click', function(e){
+        document.addEventListener('click', function (e) {
             const m = document.getElementById('qrModal');
             if (!m || !m.classList.contains('show')) return;
             if (e.target === m) closeQRModal();
         });
-        document.addEventListener('keydown', function(e){ if (e.key === 'Escape') closeQRModal(); });
+        document.addEventListener('keydown', function (e) { if (e.key === 'Escape') closeQRModal(); });
 
         // Inline-edit names for admin: click a name to edit, Enter or blur to save
         function setupInlineEditNames() {
@@ -885,7 +986,7 @@ $user_phone = $_SESSION['phone'] ?? '';
                     // remember original
                     td.setAttribute('data-original', td.textContent.trim());
                     // select content
-                    try { document.getSelection().selectAllChildren(td); } catch (e) {}
+                    try { document.getSelection().selectAllChildren(td); } catch (e) { }
                 });
 
                 td.addEventListener('keydown', function (e) {
@@ -910,22 +1011,22 @@ $user_phone = $_SESSION['phone'] ?? '';
                         headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
                         body: form.toString()
                     })
-                    .then(r => {
-                        const ct = r.headers.get('content-type') || '';
-                        if (ct.includes('application/json')) return r.json();
-                        return r.text().then(t => { throw new Error('Server returned non-JSON response:\n' + t); });
-                    })
-                    .then(data => {
-                        if (data.success) {
-                            td.textContent = newName;
-                        } else {
-                            alert('Gagal menyimpan: ' + (data.error || 'Unknown'));
+                        .then(r => {
+                            const ct = r.headers.get('content-type') || '';
+                            if (ct.includes('application/json')) return r.json();
+                            return r.text().then(t => { throw new Error('Server returned non-JSON response:\n' + t); });
+                        })
+                        .then(data => {
+                            if (data.success) {
+                                td.textContent = newName;
+                            } else {
+                                alert('Gagal menyimpan: ' + (data.error || 'Unknown'));
+                                td.textContent = orig;
+                            }
+                        }).catch(err => {
+                            alert('Terjadi kesalahan: ' + err.message);
                             td.textContent = orig;
-                        }
-                    }).catch(err => {
-                        alert('Terjadi kesalahan: ' + err.message);
-                        td.textContent = orig;
-                    });
+                        });
                 });
             });
         }
@@ -937,7 +1038,7 @@ $user_phone = $_SESSION['phone'] ?? '';
             const pemasukanBulanan = {};
             const currentDate = new Date();
             const currentMonth = currentDate.toISOString().substring(0, 7); // YYYY-MM
-            
+
             // Group data by user
             const users = <?php echo json_encode($users); ?>;
             users.forEach(user => {
@@ -950,15 +1051,15 @@ $user_phone = $_SESSION['phone'] ?? '';
                 if (i === 0) return; // skip header
                 const nameCell = row.querySelector('.editable-name');
                 if (!nameCell) return;
-                
+
                 const userId = nameCell.getAttribute('data-id');
                 const checkboxes = row.querySelectorAll('input[type="checkbox"]');
                 let totalPayment = 0;
-                
+
                 checkboxes.forEach(cb => {
                     if (cb.checked) totalPayment += 5000;
                 });
-                
+
                 if (userId) {
                     pemasukanBulanan[userId] = totalPayment;
                 }
@@ -978,7 +1079,7 @@ $user_phone = $_SESSION['phone'] ?? '';
             if (!allPemasukanData[currentMonth]) {
                 allPemasukanData[currentMonth] = {};
             }
-            
+
             Object.assign(allPemasukanData[currentMonth], pemasukanBulanan);
             localStorage.setItem('pemasukanBulanan', JSON.stringify(allPemasukanData));
         }
@@ -997,7 +1098,7 @@ $user_phone = $_SESSION['phone'] ?? '';
         }
 
         // Close profile menu ketika click di tempat lain
-        document.addEventListener('click', function(e) {
+        document.addEventListener('click', function (e) {
             const profileMenu = document.querySelector('.profile-menu');
             const dropdown = document.getElementById('profileDropdown');
             if (profileMenu && dropdown && !profileMenu.contains(e.target)) {
