@@ -57,21 +57,13 @@ if (!empty($userIds)) {
 
     <style>
         body {
-            /* Nurin */
             margin: 0;
-            /* supaya halaman rapih */
             background-image: url(https://i.pinimg.com/736x/b0/21/06/b0210669be120b2c1b2d2cc4f25bfcbd.jpg);
-            /* gambar latar belakang */
             background-repeat: no-repeat;
-            /* supaya tidak mengulang */
             background-attachment: fixed;
-            /* supaya tidak bergerak */
             background-position: center;
-            /* supaya di tengah*/
             background-size: cover;
-            /* supaya full */
             font-family: "Times New Roman", Times, serif;
-            /* font payclass */
         }
 
         #home {
@@ -80,19 +72,13 @@ if (!empty($userIds)) {
         }
 
         .header {
-            /* alma */
             display: flex;
-            /* letak header */
             justify-content: space-between;
-            /* posisi profile dan badges antara payclass */
             align-items: center;
-            /* posisi tengah profile dan badges */
             padding: 15px 30px;
-            /* profile ga gepeng */
         }
 
         .profile-menu {
-            /* Profile dropdown */
             position: relative;
             display: flex;
             align-items: center;
@@ -101,24 +87,15 @@ if (!empty($userIds)) {
         }
 
         .profile-icon {
-            /* Alma */
             width: 50px;
-            /* bentuk ikon profile */
             height: 50px;
-            /* ketinggian ikon profile */
             border: 3px solid #2f253f;
-            /* outline  ikon profile */
             border-radius: 50%;
             display: flex;
-            /* letak ikon profile */
             justify-content: center;
-            /* ikon profile agar menjadi png */
             align-items: center;
-            /* posisi ikon profile */
             background: linear-gradient(135deg, #43085d, #961ccb);
-            /* warna ikon profile */
             font-size: 22px;
-            /* ukuran ikon profile */
             transition: transform 0.2s;
         }
 
@@ -244,80 +221,51 @@ if (!empty($userIds)) {
         }
 
         .logo {
-            /* 1KA25  alma */
             text-align: center;
-            /* Posisi 1KA25*/
             color: #ccc;
-            /* warna 1KA25 */
         }
 
         .logo h1 {
-            /* Nurin */
             font-size: 100px;
-            /* Ukuran 1KA25 */
             margin: 0;
-            /* Supaya rapih payclass */
             color: #d3d3ff;
-            /* warna payclass */
             text-shadow: #000 4px 2px 4px;
-            /*bayangan payclass */
             font-family: "Luckiest Guy", cursive;
-            /*font payclass */
         }
 
         .logo p {
-            /* nURIN */
             margin: 0;
             font-size: 16px;
-            /* ukuran font 1KA25
-            color: #fff;                /* warna 1KA25 */
+            color: #fff;
             letter-spacing: 2px;
-            /* spacing huruf 1KA25 */
         }
 
         .status {
-            /* Nurin */
             text-align: right;
-            /* posisi status lunas */
             font-size: x-large;
-            /* ukuran status lunas */
         }
 
         .p2 {
-            /* Nurin */
             margin: 0;
-            /* supaya rapih status lunas */
             font-weight: bold;
-            /* Bold status lunas */
             color: #fff;
-            /* warna status lunas */
         }
 
         .badge {
-            /* Alma */
             display: inline-block;
-            /* posisi lunas */
             margin-top: 5px;
-            /* jarak status lunas */
             background-color: #b2ff59;
-            /* warna latar belakang lunas */
             color: #1b5e20;
-            /* warna teks lunas */
             font-weight: bold;
-            /* Bold teks lunas */
             padding: 5px 15px;
-            /* jarak teks lunas */
             border-radius: 20px;
-            /* border lunas */
             font-size: large;
-            /* ukuran teks lunas */
         }
 
         .container {
             display: flex;
             gap: 20px;
             flex-wrap: nowrap;
-
         }
 
         .box {
@@ -342,15 +290,10 @@ if (!empty($userIds)) {
         }
 
         .button-container {
-            /* Nurin */
             display: flex;
-            /* jarak button */
             flex-direction: column;
-            /* posisi button */
             gap: 15px;
-            /* jarak button*/
             padding: 20px;
-            /* ketebalan button */
         }
 
         button {
@@ -364,23 +307,14 @@ if (!empty($userIds)) {
         .text3,
         .text4,
         .text5 {
-            /* Nurin */
             color: rgb(42, 36, 134);
-            /* warna tulisan button */
             border-style: outset;
-            /* outline button */
             border-width: 12px;
-            /* 3D outline oval */
             border-radius: 20px;
-            /* biar oval */
             padding: 20px;
-            /* biar ada background button */
             background-color: rgb(230, 230, 254);
-            /* warna background button */
             font-size: x-large;
-            /* ukuran tulisan button */
             text-align: center;
-            /* posisi tulisan button */
         }
 
         #anggota,
@@ -406,7 +340,6 @@ if (!empty($userIds)) {
         }
 
         th,
-
         td {
             border: 1px solid #ccc;
             padding: 10px;
@@ -431,9 +364,22 @@ if (!empty($userIds)) {
             font-size: 16px;
         }
 
+        /* Disabled Style untuk User */
+        input[disabled] {
+            background-color: #eee;
+            color: #555;
+            cursor: not-allowed;
+            border: 1px solid #ccc;
+        }
+
         input[type="checkbox"] {
             transform: scale(1.3);
             cursor: pointer;
+        }
+
+        input[type="checkbox"][disabled] {
+            cursor: not-allowed;
+            opacity: 0.6;
         }
 
         /* small helper style for error highlight */
