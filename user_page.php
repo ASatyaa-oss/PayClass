@@ -56,6 +56,7 @@ if (!empty($userIds)) {
         rel="stylesheet">
 
     <style>
+        /* Gaya diambil dari admin_page.php */
         body {
             margin: 0;
             background-image: url(https://i.pinimg.com/736x/b0/21/06/b0210669be120b2c1b2d2cc4f25bfcbd.jpg);
@@ -374,17 +375,11 @@ if (!empty($userIds)) {
 
         input[type="checkbox"] {
             transform: scale(1.3);
-            cursor: pointer;
         }
 
         input[type="checkbox"][disabled] {
             cursor: not-allowed;
             opacity: 0.6;
-        }
-
-        /* small helper style for error highlight */
-        .input-error {
-            border-color: #e53935 !important;
         }
 
         .back-btn {
@@ -463,6 +458,24 @@ if (!empty($userIds)) {
 
         .qr-box .buttons button {
             flex: 1;
+        }
+
+        .profile-card .btn-back {
+            background: #f0f0f0;
+            color: #333;
+        }
+
+        .profile-card .btn-back:hover {
+            background: #e0e0e0;
+        }
+
+        .profile-card .btn-logout {
+            background: #e53935;
+            color: white;
+        }
+
+        .profile-card .btn-logout:hover {
+            background: #d32f2f;
         }
     </style>
 </head>

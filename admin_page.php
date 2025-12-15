@@ -388,8 +388,17 @@ $user_phone = $_SESSION['phone'] ?? '';
         }
 
         th,
+        <script>document.addEventListener('DOMContentLoaded', function () {
+                const pemasukanEl=document.getElementById('pemasukanValue');
+                const kenaikanEl=document.getElementById('kenaikanValue');
 
-        td {
+                // copy pemasukan to kenaikan
+                if (pemasukanEl && kenaikanEl) {
+                    kenaikanEl.textContent=pemasukanEl.textContent;
+                }
+            });
+
+        </script>td {
             border: 1px solid #ccc;
             padding: 10px;
             text-align: center;
@@ -666,12 +675,7 @@ $user_phone = $_SESSION['phone'] ?? '';
                 updateSaldo();
                 updatePemasukanBulanan();
 
-                // Logic pindahan dari style block: copy pemasukan to kenaikan
-                const pemasukanEl = document.getElementById('pemasukanValue');
-                const kenaikanEl = document.getElementById('kenaikanValue');
-                if (pemasukanEl && kenaikanEl) {
-                    kenaikanEl.textContent = pemasukanEl.textContent;
-                }
+
 
                 // restore requested tab if passed
                 const params = new URLSearchParams(window.location.search);
